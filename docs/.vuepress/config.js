@@ -88,7 +88,8 @@ module.exports = {
             'trie',
             'kmp',
             'manacher',
-            'rabin'
+            'rabin',
+            'seqment'
           ]
         },
       ],

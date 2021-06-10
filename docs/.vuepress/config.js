@@ -100,7 +100,8 @@ module.exports = {
             '',
             'recursion',
             'memo',
-            'dpbasic'
+            'dpbasic',
+            'test'
           ]
         }
       ]

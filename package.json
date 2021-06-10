@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
   "devDependencies": {
+    "husky": "^6.0.0",
     "vuepress": "^1.8.2"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "postinstall": "husky install",
+    "docs:deploy": "./deploy.sh"
   }
 }

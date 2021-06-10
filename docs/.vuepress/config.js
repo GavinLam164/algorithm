@@ -4,11 +4,14 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '基础', link: '/guide/' },
-      { text: '树型结构专题', link: '/tree/'},
+      { text: '树型结构专题', link: '/tree/' },
       { text: '图论专题', link: '/graph/'},
-      { text: '字符串专题', link: '/string/'},
+      { text: '字符串专题', link: '/string/' },
       {
         text: '动态规划专题', link: '/dp/'
+      },
+      {
+        text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm', target:'_blank'
       }
     ],
     sidebar: {
@@ -100,8 +103,7 @@ module.exports = {
             '',
             'recursion',
             'memo',
-            'dpbasic',
-            'test'
+            'dpbasic'
           ]
         }
       ]

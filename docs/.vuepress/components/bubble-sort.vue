@@ -38,6 +38,7 @@ export default {
 	methods: { 
 		setArr(str) {
 			this.all = []
+			this.allSuccess = false
 			this.arr = str.split(',').map((v) => Number(v))
 			this.fn = null
 		},

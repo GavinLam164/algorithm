@@ -24,7 +24,7 @@ export default {
 			this.$emit('setArr', this.item)
 		},
 		rand() {
-			const arr = new Array(6)
+			const arr = new Array(5)
 			for(let i = 0; i < arr.length; i++)
 			{
 				arr[i] = i+1

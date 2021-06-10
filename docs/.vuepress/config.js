@@ -89,7 +89,7 @@ module.exports = {
             'kmp',
             'manacher',
             'rabin',
-            'seqment'
+            'segment'
           ]
         },
       ],

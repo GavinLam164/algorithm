@@ -19,7 +19,9 @@ module.exports = {
         {
           title: '复杂度',
           children: [
-            'complexity'
+            '',
+            'complexity',
+            'master'
           ],
         },
         {
@@ -51,8 +53,8 @@ module.exports = {
           title: '树形结构专题',
           children: [
             '',
-            'traverse',
             'recursion',
+            'traverse',
             'morris'
           ]
         },

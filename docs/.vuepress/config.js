@@ -50,10 +50,10 @@ module.exports = {
         {
           title: '树形结构专题',
           children: [
+            '',
             'traverse',
             'recursion',
-            'morris',
-            'tree'
+            'morris'
           ]
         },
       ],

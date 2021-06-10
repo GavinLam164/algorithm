@@ -26,7 +26,6 @@ module.exports = {
             'type',
             'complexity',
             'master',
-            'diff',
             'archived'
           ],
         },

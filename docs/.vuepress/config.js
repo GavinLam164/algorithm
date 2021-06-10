@@ -8,6 +8,9 @@ module.exports = {
       { text: '图论专题', link: '/graph/'},
       { text: '字符串专题', link: '/string/' },
       {
+        text: '位运算', link: '/bit/'
+      },
+      {
         text: '动态规划专题', link: '/dp/'
       },
       {
@@ -20,13 +23,17 @@ module.exports = {
           title: '复杂度',
           children: [
             '',
+            'type',
             'complexity',
-            'master'
+            'master',
+            'diff',
+            'archived'
           ],
         },
         {
           title: '排序算法',
           children: [
+            'intro',
             'bubble',
             'select',
             'insertion',
@@ -34,17 +41,20 @@ module.exports = {
             'radix',
             'merge',
             'quick',
-            'heap'
+            'heap',
+            'sort-archived'
           ]
         },
         {
           title: '基础数据结构',
           children: [
+            'struct',
             'array',
             'link',
             'queue',
             'stack',
-            'hashmap'
+            'hashmap',
+            'struct-archived'
           ]
         },
       ],
@@ -55,7 +65,8 @@ module.exports = {
             '',
             'recursion',
             'traverse',
-            'morris'
+            'morris',
+            'list'
           ]
         },
       ],
@@ -97,6 +108,15 @@ module.exports = {
             'segment'
           ]
         },
+      ],
+      '/bit/': [
+        {
+          title: '位运算',
+          children: [
+            '',
+            'operator'
+          ]
+        }
       ],
       '/dp/': [
         {

@@ -1,10 +1,10 @@
 <template>
 	<div class="sort-data-wrapper">
 		<input v-model="item" type="text" placeholder="请输入数字，逗号分隔">
-		<button @click="setArr">confirm</button>
-		<button @click="rand">rand</button>
-		<button @click="$emit('next')">next</button>
-		<button @click="$emit('autoplay')">autoplay</button>
+		<button @click="setArr">确认</button>
+		<button @click="rand">随机</button>
+		<button @click="$emit('next')">下一步</button>
+		<button @click="$emit('autoplay')">自动播放</button>
 	</div>
 </template>
 

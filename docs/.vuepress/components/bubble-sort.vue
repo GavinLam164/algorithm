@@ -13,7 +13,9 @@
 			{{ item }}
 			</li>
 		</transition-group>
-		{{msg}}
+		<div>
+			{{msg}}
+		</div>
 	</div> 
 </template>
 
@@ -41,29 +43,34 @@ export default {
 			this.allSuccess = false
 			this.arr = str.split(',').map((v) => Number(v))
 			this.fn = null
+			this.msg = ''
 		},
 		*createFn() {
 
-			for(let i = 1; i < this.arr.length; i++)
+			for(let i = 0; i < this.arr.length - 1; i++)
 			{
-				for(let j = 1; j < this.arr.length ; j++)
+				for(let j = 1; j < this.arr.length - i ; j++)
 				{
 					yield;
 					this.a = j-1
 					this.b = j
+					this.msg = '比较相邻元素'
 					yield;
 					if(this.arr[j-1] > this.arr[j])
 					{
+						this.msg = '发现前面的元素大于后面的元素'
 						yield;
 						const tmp = this.arr[j]
 						this.arr[j] = this.arr[j-1]
 						this.arr[j-1] = tmp
 						this.arr = [...this.arr]
+						this.msg = '进行前后交换'
 					}
 					this.a = null
 					this.b = null
 				}
 				yield;
+				this.msg = '得到了一个最大值，并且放到了数组中正确的位置'
 				this.all = this.all.concat([[...this.arr]])
 			}
 		},
@@ -76,8 +83,7 @@ export default {
 				this.allSuccess = true
 				this.fn = null
 			}else {
-				this.msg = ''
-				this.allSuccess = false
+				
 			}
 		},
 		initFn() {
@@ -92,12 +98,14 @@ export default {
 		},
 		autoplay() {
 			this.initFn()
-			const next = () => {
+			this.nextStep()
+			const next = async() => {
+				await this.$nextTick()
 				setTimeout(() => {
 					if(this.fn == null) return
 					this.nextStep()
 					next()
-				}, 500)
+				}, 1200)
 			}
 			next()
 		}

@@ -3,16 +3,19 @@
 		<sort-data @setArr="setArr" @next="next" @autoplay="autoplay"/>
 		<div>
 			<ul v-for="(arr, i) in all" :key="i">
-				<li v-for="(item, j) in arr" v-bind:key="item" :class="arr.length - 1 - j <= i? 'success': ''">
+				<li v-for="(item, j) in arr" v-bind:key="item" :class="j <= i ? 'success': ''">
 					{{ item }}
 				</li>
 			</ul>
 		</div>
 		<transition-group name="flip-list" tag="ul">
-			<li v-for="(item, i) in arr" v-bind:key="item" :class="i == a || i == b ? 'red': (i >= arr.length - all.length || allSuccess) ? 'success': ''">
+			<li v-for="(item, i) in arr" v-bind:key="item" :class="i == a || i == b ? 'red': (i < all.length || allSuccess) ? 'success': ''">
 			{{ item }}
 			</li>
 		</transition-group>
+		<div>
+			minIndex:{{a}}
+		</div>
 		<div>
 			{{msg}}
 		</div>
@@ -49,28 +52,34 @@ export default {
 
 			for(let i = 0; i < this.arr.length - 1; i++)
 			{
-				for(let j = 1; j < this.arr.length - i ; j++)
+				let minIndex = i
+				this.a = minIndex
+				for(let j = i + 1; j < this.arr.length; j++)
 				{
 					yield;
-					this.a = j-1
 					this.b = j
-					this.msg = '比较相邻元素'
+					this.msg = '比较元素'
 					yield;
-					if(this.arr[j-1] > this.arr[j])
+					if(this.arr[j] < this.arr[minIndex])
 					{
-						this.msg = '发现前面的元素大于后面的元素'
+						this.msg = '当前元素小于当前最小值'
 						yield;
-						const tmp = this.arr[j]
-						this.arr[j] = this.arr[j-1]
-						this.arr[j-1] = tmp
-						this.arr = [...this.arr]
-						this.msg = '进行前后交换'
+						minIndex = j
+						this.a = minIndex
+						this.msg = `更新最小值的元素下标为:${minIndex}`
 					}
-					this.a = null
-					this.b = null
+					
 				}
 				yield;
-				this.msg = '得到了一个最大值，并且放到了数组中正确的位置'
+				this.a = minIndex
+				this.b = i
+				const tmp = this.arr[minIndex]
+				this.arr[minIndex] = this.arr[i]
+				this.arr[i] = tmp
+				this.msg = `得到了一个最小值的下标:${minIndex}，并且放到了区间开始位置`
+				yield;
+				this.a = null
+				this.b = null
 				this.all = this.all.concat([[...this.arr]])
 			}
 		},

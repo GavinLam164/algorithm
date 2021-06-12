@@ -34,11 +34,13 @@ export default {
 			a: null,
 			b: null,
 			allSuccess: false,
-			msg: ''
+			msg: '',
+			str: ''
 		}
 	},
 	methods: { 
 		setArr(str) {
+			this.str = str
 			this.all = []
 			this.allSuccess = false
 			this.arr = str.split(',').map((v) => Number(v))
@@ -89,6 +91,7 @@ export default {
 		initFn() {
 			if(this.fn == null) {
 				this.all = []
+				this.setArr(this.str)
 				this.fn = this.createFn()
 			}
 		},

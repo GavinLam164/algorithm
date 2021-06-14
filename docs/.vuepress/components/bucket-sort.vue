@@ -66,13 +66,11 @@ export default {
 			this.all = []
 			this.allSuccess = false
 			this.arr = str.split(',').map((v) => Number(v))
-			let min = Number.MAX_VALUE
 			let max = Number.MIN_VALUE
 			for(const v of this.arr) {
-				min = Math.min(v, min)
 				max = Math.max(v, max)
 			}
-			const bucket = new Array(max - min + 2)
+			const bucket = new Array(max + 1)
 			bucket.fill(0)
 			this.a = null
 			this.b = null
@@ -100,6 +98,7 @@ export default {
 				this.a = i
 				this.c = i
 				this.d = i
+				yield
 				while(this.bucket[i] > 0)
 				{
 					this.msg = `元素值：${i}，出现次数：${this.bucket[i]}`

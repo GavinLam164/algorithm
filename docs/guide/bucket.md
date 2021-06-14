@@ -31,15 +31,22 @@
 ## 代码
 
 ```java
-public class BubbleSort {
+public class BucketSort {
     public void sort(int[] arr) {
-        for(int i = 0; i < arr.length - 1; i++) {
-            for(int j = 1; j < arr.length - i; j++) {
-                if(arr[j-1]> arr[j]) {
-                    int tmp = arr[j-1];
-                    arr[j-1] = arr[j];
-                    arr[j] = tmp;
-                }
+        int max = Integer.MIN_VALUE;
+        for(int v: arr) { // 获取数值范围
+            max = Math.max(max, v);
+        }
+        // 准备桶用于计数
+        int[] bucket = new int[max + 1];
+        for(int v: arr) {
+            bucket[v]++;
+        }
+        int index = 0;
+        for(int i = 0; i < bucket.length; i++) {
+            while(bucket[i] > 0) { // 取出计数结果, i为出现的元素值，bucket[i]为i出现的次数
+                arr[index++] = i;
+                bucket[i]--;
             }
         }
     }

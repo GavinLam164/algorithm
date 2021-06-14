@@ -82,8 +82,7 @@ module.exports = {
             'topology',
             'disjoinset',
             'kruskal',
-            'prim',
-            'astar'
+            'prim'
           ]
         },
         {

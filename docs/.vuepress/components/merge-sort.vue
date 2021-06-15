@@ -1,20 +1,45 @@
 <template>
 	<div class="wrapper">
 		<sort-data @setArr="setArr" @next="next" @autoplay="autoplay"/>
-		<div>
-			<ul v-for="(arr, i) in all" :key="i">
-				<li v-for="(item, j) in arr" v-bind:key="item" :class="arr.length - 1 - j <= i? 'success': ''">
-					{{ item }}
-				</li>
-			</ul>
-		</div>
+		
 		<transition-group name="flip-list" tag="ul">
-			<li v-for="(item, i) in arr" v-bind:key="item" :class="i == a || i == b ? 'red': (i >= arr.length - all.length || allSuccess) ? 'success': ''">
+			<li v-for="(item, i) in arr" v-bind:key="i" :class="a != null && i >= a && i <= b ? 'red': ''">
 			{{ item }}
 			</li>
 		</transition-group>
 		<div>
-			{{msg}}
+			<div>
+				数组A：
+			</div>
+			<ul>
+				<li v-for="(item, j) in A" v-bind:key="j" :class="j === aIndex ? 'red': ''">
+					{{ item }}
+				</li>
+			</ul>
+			
+		</div>
+		<div>
+			<div>
+				数组B：
+			</div>
+			<ul>
+				<li v-for="(item, j) in B" v-bind:key="j" :class="j === bIndex ? 'red': ''">
+					{{ item }}
+				</li>
+			</ul>
+		</div>
+		<div>
+			<div>
+				数组A、B合并的有序数组ret：
+			</div>
+			<ul>
+				<li v-for="(item, j) in ret" v-bind:key="j" :class="j === retIndex ? 'red': ''">
+					{{ item }}
+				</li>
+			</ul>
+		</div>
+		<div>
+			log: {{msg}}
 		</div>
 	</div> 
 </template>
@@ -30,9 +55,15 @@ export default {
 			backup: [],
 			arr: [],
 			all: [],
+			A: [],
+			B: [],
+			ret: [],
+			retIndex: null,
 			fn: null,
 			a: null,
 			b: null,
+			aIndex: null,
+			bIndex: null,
 			allSuccess: false,
 			msg: '',
 			str: ''
@@ -46,35 +77,77 @@ export default {
 			this.arr = str.split(',').map((v) => Number(v))
 			this.fn = null
 			this.msg = ''
+			this.aIndex = null
+			this.bIndex = null
+			this.retIndex = null
 		},
 		*createFn() {
-
-			for(let i = 0; i < this.arr.length - 1; i++)
-			{
-				for(let j = 1; j < this.arr.length - i ; j++)
-				{
-					yield;
-					this.a = j-1
-					this.b = j
-					this.msg = '比较相邻元素'
-					yield;
-					if(this.arr[j-1] > this.arr[j])
-					{
-						this.msg = '发现前面的元素大于后面的元素'
-						yield;
-						const tmp = this.arr[j]
-						this.arr[j] = this.arr[j-1]
-						this.arr[j-1] = tmp
-						this.arr = [...this.arr]
-						this.msg = '进行前后交换'
-					}
-					this.a = null
-					this.b = null
-				}
-				yield;
-				this.msg = '得到了一个最大值，并且放到了数组中正确的位置'
-				this.all = this.all.concat([[...this.arr]])
+			let gn = this.mergeSort(this.arr, 0, this.arr.length - 1)
+			while(!gn.next().done) {
+				yield
 			}
+		},
+		*mergeSort(arr, i, j) {
+			if(i >= j) return
+			const mid = i + Math.floor((j - i) / 2)
+			
+			let gn = this.mergeSort(arr, i, mid)
+			while(!gn.next().done) {
+				yield
+			}
+			
+			gn = this.mergeSort(arr, mid + 1, j)
+			while(!gn.next().done) {
+				yield
+			}
+			
+			gn = this.merge(arr, i, mid, j)
+			while(!gn.next().done) {
+				yield
+			}
+		},
+		*merge(arr, i, m, j) {
+			this.msg = `在[${i},${j}]的范围，将数组从下标${m}拆分为数组A、B，将合并的结果放到有序数组ret中`
+			this.A = arr.filter((_, index) => index >= i && index <= m)
+			this.B = arr.filter((_, index) => index > m && index <= j)
+			this.a = i
+			this.b = j
+			const ret = new Array()
+			this.ret = ret
+			let l = i, r = m + 1
+			yield
+			while(l <= m && r <= j) {
+				this.aIndex = l
+				this.bIndex = r - (m - i + 1)
+				yield
+				this.ret.push(arr[l] < arr[r] ? arr[l++]: arr[r++])
+			}
+			yield
+			while(l <= m) {
+				this.aIndex = l
+				yield
+				this.ret.push(arr[l++])
+			}
+			yield
+			this.aIndex = null
+			while(r <= j) {
+				this.bIndex = r - (m - i + 1)
+				yield
+				this.ret.push(arr[r++])
+			}
+			yield
+			this.bIndex = null
+			this.msg = `将有序数组ret中的元素复制回原数组的[${i},${j}]的范围`
+			for(let z = 0; z < ret.length; z++) {
+				yield
+				this.retIndex = z
+				arr[i+z] = ret[z]
+			}
+			yield
+			this.retIndex = null
+			this.ret = []
+			this.A = []
+			this.B = []
 		},
 		nextStep() {
 			if(this.fn == null) return
@@ -108,7 +181,7 @@ export default {
 					if(this.fn == null) return
 					this.nextStep()
 					next()
-				}, 1200)
+				}, 3000)
 			}
 			next()
 		}

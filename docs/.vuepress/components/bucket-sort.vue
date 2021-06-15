@@ -32,7 +32,7 @@
 		</transition-group>
 		</div>
 		<div>
-			{{msg}}
+			log: {{msg}}
 		</div>
 	</div> 
 </template>

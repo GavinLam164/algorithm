@@ -3,13 +3,13 @@
 		<sort-data @setArr="setArr" @next="next" @autoplay="autoplay"/>
 		<div>
 			<ul v-for="(arr, i) in all" :key="i">
-				<li v-for="(item, j) in arr" v-bind:key="item" :class="j <= i ? 'success': ''">
+				<li v-for="(item, j) in arr" v-bind:key="j" :class="j <= i ? 'success': ''">
 					{{ item }}
 				</li>
 			</ul>
 		</div>
 		<transition-group name="flip-list" tag="ul">
-			<li v-for="(item, i) in arr" v-bind:key="item" :class="i == a || i == b ? 'red': (i < all.length || allSuccess) ? 'success': ''">
+			<li v-for="(item, i) in arr" v-bind:key="i" :class="i == a || i == b ? 'red': (i < all.length || allSuccess) ? 'success': ''">
 			{{ item }}
 			</li>
 		</transition-group>
@@ -17,7 +17,7 @@
 			minIndex:{{a}}
 		</div>
 		<div>
-			{{msg}}
+			log: {{msg}}
 		</div>
 	</div> 
 </template>

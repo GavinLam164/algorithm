@@ -3,7 +3,7 @@
 		<sort-data @setArr="setArr" @next="next" @autoplay="autoplay"/>
 		
 		<transition-group name="flip-list" tag="ul">
-			<li v-for="(item, i) in arr" v-bind:key="i" :class="a != null && i >= a && i <= b ? 'red': ''">
+			<li v-for="(item, i) in arr" v-bind:key="i" :class="allSuccess ? 'success': a != null && i >= a && i <= b ? 'red': ''">
 			{{ item }}
 			</li>
 		</transition-group>
@@ -181,7 +181,7 @@ export default {
 					if(this.fn == null) return
 					this.nextStep()
 					next()
-				}, 3000)
+				}, 2000)
 			}
 			next()
 		}

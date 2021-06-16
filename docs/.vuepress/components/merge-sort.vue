@@ -12,7 +12,7 @@
 				数组A：
 			</div>
 			<ul>
-				<li v-for="(item, j) in A" v-bind:key="j" :class="j === aIndex ? 'red': ''">
+				<li v-for="(item, j) in A" v-bind:key="j" :class="aIndex != null && j === aIndex ? 'red': ''">
 					{{ item }}
 				</li>
 			</ul>
@@ -23,7 +23,7 @@
 				数组B：
 			</div>
 			<ul>
-				<li v-for="(item, j) in B" v-bind:key="j" :class="j === bIndex ? 'red': ''">
+				<li v-for="(item, j) in B" v-bind:key="j" :class="bIndex != null && j === bIndex ? 'red': ''">
 					{{ item }}
 				</li>
 			</ul>
@@ -121,6 +121,8 @@ export default {
 				this.bIndex = r - (m - i + 1)
 				yield
 				this.ret.push(arr[l] < arr[r] ? arr[l++]: arr[r++])
+				this.aIndex = l
+				this.bIndex = r - (m - i + 1)
 			}
 			yield
 			while(l <= m) {

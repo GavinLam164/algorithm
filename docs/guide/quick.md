@@ -88,6 +88,17 @@ public class QuickBase {
 
 以上过程中，每次执行都会经过**算法原型**来划分区域，不断的减小规模，将`小于某个值的元素放左边，等于某个值的元素放中间，大于某个值的元素放右边`，以`中间区域的元素`作为辅助，完成局部的相对次序排序，从而完成整个数组的排序。
 
+## 动画(一图胜千言)
+
+> 默认数据是随机产生的，可自行输入数据或再次点击随机生成，记得点击确认。
+>
+> 动画模式有单步调试/自动播放两种模式。
+>
+> 单步调试：需不停的点击"下一步"完成执行流程。
+
+<br>
+<quick-sort />
+
 ## 代码
 
 ```java
@@ -104,7 +115,7 @@ public class QuickSort {
     }
 
     // 改写QuickBase，以支持[start,end]区间的荷兰国旗问题
-    public int[] base(int[] arr, int start, int end, int K) {
+    public int[] partition(int[] arr, int start, int end, int K) {
         // l 表示 [start,l]为元素值小于K的区域
         // r 表示 [r,end]为元素值大于K的区域
         // i 表示 当前遍历的元素下标
@@ -138,7 +149,7 @@ public class QuickSort {
         int K = arr[randIndex];
 
         // 确定等于K的区域
-        int[] range = base(arr, i, j, K);
+        int[] range = partition(arr, i, j, K);
 
         // 小于K的区域递归执行
         quickSort(arr, i, range[0] - 1);

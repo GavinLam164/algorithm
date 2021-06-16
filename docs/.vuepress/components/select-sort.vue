@@ -9,7 +9,7 @@
 			</ul>
 		</div>
 		<transition-group name="flip-list" tag="ul">
-			<li v-for="(item, i) in arr" v-bind:key="i" :class="i == a || i == b ? 'red': (i < all.length || allSuccess) ? 'success': ''">
+			<li v-for="(item, i) in arr" v-bind:key="item" :class="i == a || i == b ? 'red': (i < all.length || allSuccess) ? 'success': ''">
 			{{ item }}
 			</li>
 		</transition-group>

@@ -26,7 +26,7 @@
 		<div class="row">
 			<div>结果数组：</div>
 		<transition-group name="flip-list" tag="ul">
-			<li v-for="(item, i) in res" v-bind:key="i" :class="'success'">
+			<li v-for="(item) in res" v-bind:key="item" :class="'success'">
 			{{ item }}
 			</li>
 		</transition-group>

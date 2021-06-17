@@ -14,7 +14,7 @@ module.exports = {
         text: '动态规划专题', link: '/dp/'
       },
       {
-        text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm', target:'_blank'
+        text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm_code', target:'_blank'
       }
     ],
     sidebar: {

@@ -23,7 +23,7 @@ module.exports = {
           title: '复杂度',
           children: [
             '',
-            'type',
+            // 'type',
             'complexity',
             'master',
             'archived'

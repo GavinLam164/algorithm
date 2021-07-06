@@ -11,3 +11,32 @@
 速记：链表可以是非连续内存分配，查询慢，增删快。
 
 学好链表是对学习数据结构非常有帮助的，很多经典的数据结构都是基于链表概念进行实现的。
+
+以下是一个简单的链表，每个节点中包含下一个节点的指针`next`以及当前节点的值`val`。
+
+```java
+public class LinkNode {
+    public LinkNode next;
+    public int val;
+
+    public LinkNode(int val) {
+        this.val = val;
+    }
+
+    public static void main(String[] args) {
+        // 链表头节点 1
+        LinkNode head = new LinkNode(1);
+        // 1 -> 2
+        head.next = new LinkNode(2);
+        // 1 -> 2 -> 3
+        head.next.next = new LinkNode(3);
+
+        // 通过头节点遍历链表
+        LinkNode tmp = head;
+        while(tmp != null) {
+            System.out.println(tmp.val);
+            tmp = tmp.next;
+        }
+    }
+}
+```

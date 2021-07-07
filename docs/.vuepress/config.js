@@ -4,7 +4,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '基础', link: '/guide/' },
-      // { text: '树型结构', link: '/tree/' },
+      { text: '树型结构', link: '/tree/' },
       // { text: '图论', link: '/graph/'},
       // { text: '字符串', link: '/string/' },
       // {
@@ -57,18 +57,18 @@ module.exports = {
           ]
         },
       ],
-      // '/tree/': [
-      //   {
-      //     title: '树形结构专题',
-      //     children: [
-      //       '',
-      //       'recursion',
-      //       'traverse',
-      //       'morris',
-      //       'list'
-      //     ]
-      //   },
-      // ],
+      '/tree/': [
+        {
+          title: '树形结构',
+          children: [
+            '',
+            'recursion',
+            'traverse',
+            'morris',
+            'list'
+          ]
+        },
+      ],
       // '/graph/': [
       //   {
       //     title: '图论基础',

@@ -10,6 +10,25 @@
 <img src="/二叉树.png">
 </div>
 
+代码如下：
+```java
+public class TreeNode {
+    TreeNode left;
+    TreeNode right;
+    int val;
+    public TreeNode(int val) {
+        this.val = val;
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(2);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(3);
+    }
+}
+```
+
+
 大部分树结构是根据某个属性值有序组织的，通过有序这个特性可以在树中使用二分搜索快速定位到某个节点，所以查询时间复杂度是O(LogN)，这类树结构我们称之为搜索二叉树。
 
 > 这里的有序组织是指，以某个节点为头的子树，对应的左子树中所有的节点的val都比该节点的val要小，对应的右子树中所有的节点的val都比该节点的val要大。
@@ -31,4 +50,3 @@
 所以通常会约束其平衡性，也就是常说的平衡搜索二叉树：红黑树、AVL树、SB树等，这些树分别从节点颜色、节点的高度、节点的数量等性质保证了树的平衡性，并维护了树的节点次序是有序组织的。
 
 接下来我们会学习常见的树结构及其性质，以及遍历、调整树结构等基本操作。
-

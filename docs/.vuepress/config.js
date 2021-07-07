@@ -4,18 +4,18 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '基础', link: '/guide/' },
-      { text: '树型结构专题', link: '/tree/' },
-      { text: '图论专题', link: '/graph/'},
-      { text: '字符串专题', link: '/string/' },
-      {
-        text: '位运算', link: '/bit/'
-      },
-      {
-        text: '动态规划专题', link: '/dp/'
-      },
-      {
-        text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm_code', target:'_blank'
-      }
+      // { text: '树型结构专题', link: '/tree/' },
+      // { text: '图论专题', link: '/graph/'},
+      // { text: '字符串专题', link: '/string/' },
+      // {
+      //   text: '位运算', link: '/bit/'
+      // },
+      // {
+      //   text: '动态规划专题', link: '/dp/'
+      // },
+      // {
+      //   text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm_code', target:'_blank'
+      // }
     ],
     sidebar: {
       '/guide/': [
@@ -57,76 +57,76 @@ module.exports = {
           ]
         },
       ],
-      '/tree/': [
-        {
-          title: '树形结构专题',
-          children: [
-            '',
-            'recursion',
-            'traverse',
-            'morris',
-            'list'
-          ]
-        },
-      ],
-      '/graph/': [
-        {
-          title: '图论基础',
-          children: [
-            ''
-          ]
-        },
-        {
-          title: '图论算法',
-          children: [
-            'topology',
-            'disjoinset',
-            'kruskal',
-            'prim'
-          ]
-        },
-        {
-          title: '搜索算法',
-          children: [
-            'bfs',
-            'dfs',
-            'astar'
-          ]
-        },
-      ],
-      '/string/': [
-        {
-          title: '字符串专题',
-          children: [
-            '',
-            'trie',
-            'kmp',
-            'manacher',
-            'rabin',
-            'segment'
-          ]
-        },
-      ],
-      '/bit/': [
-        {
-          title: '位运算',
-          children: [
-            '',
-            'operator'
-          ]
-        }
-      ],
-      '/dp/': [
-        {
-          title: '动态规划专题',
-          children: [
-            '',
-            'recursion',
-            'memo',
-            'dpbasic'
-          ]
-        }
-      ]
+      // '/tree/': [
+      //   {
+      //     title: '树形结构专题',
+      //     children: [
+      //       '',
+      //       'recursion',
+      //       'traverse',
+      //       'morris',
+      //       'list'
+      //     ]
+      //   },
+      // ],
+      // '/graph/': [
+      //   {
+      //     title: '图论基础',
+      //     children: [
+      //       ''
+      //     ]
+      //   },
+      //   {
+      //     title: '图论算法',
+      //     children: [
+      //       'topology',
+      //       'disjoinset',
+      //       'kruskal',
+      //       'prim'
+      //     ]
+      //   },
+      //   {
+      //     title: '搜索算法',
+      //     children: [
+      //       'bfs',
+      //       'dfs',
+      //       'astar'
+      //     ]
+      //   },
+      // ],
+      // '/string/': [
+      //   {
+      //     title: '字符串专题',
+      //     children: [
+      //       '',
+      //       'trie',
+      //       'kmp',
+      //       'manacher',
+      //       'rabin',
+      //       'segment'
+      //     ]
+      //   },
+      // ],
+      // '/bit/': [
+      //   {
+      //     title: '位运算',
+      //     children: [
+      //       '',
+      //       'operator'
+      //     ]
+      //   }
+      // ],
+      // '/dp/': [
+      //   {
+      //     title: '动态规划专题',
+      //     children: [
+      //       '',
+      //       'recursion',
+      //       'memo',
+      //       'dpbasic'
+      //     ]
+      //   }
+      // ]
     }
   }
 }

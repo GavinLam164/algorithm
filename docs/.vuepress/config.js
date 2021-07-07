@@ -4,18 +4,18 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '基础', link: '/guide/' },
-      // { text: '树型结构专题', link: '/tree/' },
-      // { text: '图论专题', link: '/graph/'},
-      // { text: '字符串专题', link: '/string/' },
+      // { text: '树型结构', link: '/tree/' },
+      // { text: '图论', link: '/graph/'},
+      // { text: '字符串', link: '/string/' },
       // {
       //   text: '位运算', link: '/bit/'
       // },
       // {
-      //   text: '动态规划专题', link: '/dp/'
+      //   text: '动态规划', link: '/dp/'
       // },
-      // {
-      //   text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm_code', target:'_blank'
-      // }
+      {
+        text: 'GitHub', link: 'https://github.com/GavinLam164/algorithm_code', target:'_blank'
+      }
     ],
     sidebar: {
       '/guide/': [

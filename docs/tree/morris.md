@@ -12,11 +12,19 @@ Morris就是一种不使用额外的数据结构，也能够实现先/中/后序
 3. 当cur2.right为null时，使cur2.right指向cur1，即：`cur2.right= cur1`。
 4. 已经设置好引用后，cur1可以继续往左孩子进行遍历，即：`cur1 = cur1.left`。
 
+<div style="text-align: center">
+<img src="/Morris遍历1.png">
+</div>
+
 使用与删除right引用：
 
 5. 在不停的进行上述流程后，cur1.left为空，证明cur1已经是未遍历过的最左节点了，此时可根据遍历顺序输出该节点
 6. 之后通过`cur1 = cur1.right`，回到之前遍历过的节点。
 7. 回到遍历过的节点之后，重复步骤1，找到cur2.right指向cur1的节点，并将该引用重置为null，即：`cur2.right = null`。
+
+<div style="text-align: center">
+<img src="/Morris遍历2.png">
+</div>
 
 总结：
 上述流程是利用了当前节点cur1的左子树的最右节点cur2的right指针。
